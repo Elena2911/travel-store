@@ -139,7 +139,12 @@ function sortItems(sortType, itemList) {
 
 function handleSearch() {
     const searchText = searchInput.value.trim();
-    currentItems = searchText ? filterItems(searchText) : [...items];
+    if (!searchText) {
+        currentItems = [...items];
+        sortSelect.value = 'alphabet';
+    } else {
+        currentItems = filterItems(searchText);
+    }
     currentItems = sortItems(sortSelect.value, currentItems);
     renderItems(currentItems);
 }
@@ -151,9 +156,8 @@ searchInput.addEventListener('keyup', function(event) {
     }
 });
 
-
+searchInput.addEventListener('input', handleSearch);
 searchBtn.addEventListener('click', handleSearch);
-
 
 sortSelect.addEventListener('change', () => {
     currentItems = sortItems(sortSelect.value, currentItems);
