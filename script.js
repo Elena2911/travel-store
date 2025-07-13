@@ -2,7 +2,7 @@ const items = [{
         title: "Австрия",
         description: "Центр горнолыжного туризма!",
         price: 590,
-        img: "./img/austria.ipg",
+        img: "./img/austria.jpg",
         rating: 4.0,
     },
     {
